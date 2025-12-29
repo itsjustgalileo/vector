@@ -58,7 +58,7 @@ extern "C" {
      *
      * @return Pointer to a new Vector, or NULL on allocation failure.
      */
-    extern Vector *vector_init(size_t capacity,
+    extern Vector *vector_create(size_t capacity,
                                size_t elem_size,
                                void (*destructor)(void *));
 
@@ -70,7 +70,7 @@ extern "C" {
      *
      * @param vec Vector to destroy.
      */
-    extern void vector_cleanup(Vector *vec);
+    extern void vector_destroy(Vector *vec);
 
     /**
      * @brief Reset the vector size to zero.

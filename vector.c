@@ -4,7 +4,7 @@
 #include <stdbool.h>
 #include <stdint.h>
 
-#include "./vector.h"
+#include "vector.h"
 
 struct Vector {
     void *value;
@@ -14,7 +14,7 @@ struct Vector {
     void (*destructor)(void *);
 };
 
-Vector *vector_init(const size_t capacity, const size_t elem_size, void (*destructor)(void *)) {
+Vector *vector_create(const size_t capacity, const size_t elem_size, void (*destructor)(void *)) {
     assert(elem_size > 0);
     
     Vector *vec = (Vector *)malloc(sizeof(struct Vector));
@@ -36,7 +36,7 @@ Vector *vector_init(const size_t capacity, const size_t elem_size, void (*destru
     return vec;
 }
 
-void vector_cleanup(Vector *vec) {
+void vector_destroy(Vector *vec) {
     assert(vec);
 
     if (vec->destructor) {
